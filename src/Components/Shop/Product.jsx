@@ -1,10 +1,13 @@
-
+import React from 'react'
+import {useHistory} from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 
 let Product = ({ product }) => {
     return (
 
         <div >
+            <Link  to={{search: `?search=${product.asin}`}}>
             <div>
                 <img src={product?.img} alt={'pic'} />
             </div>
@@ -23,7 +26,7 @@ let Product = ({ product }) => {
             <div>
                 {product.name}
             </div>
-
+        </Link>
         </ div>
     )
 

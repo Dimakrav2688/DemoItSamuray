@@ -6,16 +6,19 @@ const SET_SEARCH = 'SET_SEARCH'
 
 let initialState = {
     productsData: [],
+    categories: [],
+    search: '',
 
-    search: ''
 }
 
 
 
 const productsReducer = (state = initialState, action ) => {
     switch (action.type) {
-        case SET_PRODUCTS: 
-            return {...state, productsData: action.payload.products}
+        case SET_PRODUCTS:
+            const allCategories = action.payload.products.map(product => product.bsr_category)
+            const categories = [... new Set(allCategories)]
+            return {...state, productsData: action.payload.products, categories}
         case SET_SEARCH: 
             return {...state, search: action.payload }
         default: 
@@ -33,7 +36,6 @@ export const actions = {
 
     
 export const getArrayData = () => async (dispatch) => {
-    // debugger
 
     const data = await productsAPI.getProducts()
     dispatch(actions.setProducts(data))
