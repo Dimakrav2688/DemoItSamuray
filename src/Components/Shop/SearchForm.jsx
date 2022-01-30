@@ -1,8 +1,9 @@
 import * as yup from 'yup'
-import {useFormik} from 'formik';
-import {useDispatch} from 'react-redux';
-import {actions} from '../../redux/products-Reducer';
-import React, {useEffect, useState} from 'react';
+import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { actions } from '../../redux/products-Reducer';
+import React, { useEffect, useState } from 'react';
+import TextField from '@mui/material/TextField';
 
 
 const SearchForm = () => {
@@ -14,14 +15,14 @@ const SearchForm = () => {
     })
 
     const formik = useFormik({
-        initialValues: {search: ''},
+        initialValues: { search: '' },
         onSubmit: (values) => {
             dispatch(actions.setSearch(values.search))
         },
         validationSchema
     })
 
-    const {values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty} = formik
+    const { values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty } = formik
 
 
     useEffect(() => {
@@ -34,9 +35,11 @@ const SearchForm = () => {
 
     return (
         <div>
+            <form onSubmit={formik.handleSubmit}>
 
-            <input type='text' placeholder='Search' name='search' onChange={handleChange} onBlur={handleBlur}
-                   values={values.search}/>
+            <TextField  type='text' label='Search product' name='search' onChange={handleChange} onBlur={handleBlur}
+                values={values.search} />
+
             {touched.search && errors.search && <p>{errors.search}</p>}
 
             <button
@@ -47,6 +50,7 @@ const SearchForm = () => {
                 search
             </button>
 
+            </form>
         </div>
     )
 }

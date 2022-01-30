@@ -1,10 +1,13 @@
-.ShopContainer {
+.shopContainer {
     display: flex;
+
+}
+
+.product {
+    display: flex;    
+    margin: 10 px;
     flex-wrap: wrap;
+    box-sizing: 300px;
     
 }
 
-/* .classContainer {
-    display: flex;
-    
-} */
