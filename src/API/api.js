@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 const PRODUCTS = "/products"
 
 const instance = axios.create({
@@ -8,10 +9,10 @@ const instance = axios.create({
 
 const productsAPI = {
     getProducts() {
-        const result = instance.get(PRODUCTS).then(res=> res.data)
+        const result = instance.get(PRODUCTS).then(res => res.data)
         return result
     }
-    
+
 }
 
 export default productsAPI; 

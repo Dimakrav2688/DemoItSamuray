@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import AppShopProducts from './App';
 import reportWebVitals from './reportWebVitals';
+import './i18n';
 
-ReactDOM.render( <AppShopProducts />, document.getElementById('root')
+
+
+ReactDOM.render(<AppShopProducts />, document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
