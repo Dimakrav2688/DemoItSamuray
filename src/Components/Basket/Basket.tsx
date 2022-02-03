@@ -1,14 +1,10 @@
+
 import { ShoppingBasket } from "@mui/icons-material";
 import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 
 
-const Basket = (props) => {
-    const {
-        cartOpen,
-        closeCard = Function.prototype,
-        order,
-        removeFromOrder
-    } = props;
+const Basket = (props : any) => {
+    const {cartOpen, closeCard = Function.prototype,} = props;
 
     return (
         <Drawer

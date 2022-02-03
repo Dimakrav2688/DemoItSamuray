@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import AppShopProducts from './App';
+import AppShopProducts from './App.tsx';
 import reportWebVitals from './reportWebVitals';
 import './i18n';
+import {QueryParamProvider} from 'use-query-params';
+import {BrowserRouter as Router, Route} from "react-router-dom";
 
 
-
-ReactDOM.render(<AppShopProducts />, document.getElementById('root')
+ReactDOM.render(
+    <AppShopProducts/>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
