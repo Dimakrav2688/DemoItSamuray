@@ -1,8 +1,8 @@
 // @ts-ignore
-import React, {Suspense} from 'react'
+import React, {Suspense, useEffect} from 'react'
 // @ts-ignore
 import {BrowserRouter as Router, Route } from 'react-router-dom';
-import {Provider} from 'react-redux';
+import {Provider, useDispatch} from 'react-redux';
 // @ts-ignore
 import store from "./redux/redux-store.ts";
 // @ts-ignore
@@ -12,6 +12,7 @@ import style from './App.css'
 import i18n from './i18n'
 import {I18nextProvider} from "react-i18next";
 import { QueryParamProvider } from 'use-query-params';
+import {getDataAction} from "./redux/actionTypes";
 
 const Shop = React.lazy(() => import('./Components/Shop/ShopContainer'))
 

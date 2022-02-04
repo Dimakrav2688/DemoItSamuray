@@ -16,6 +16,7 @@ import {AppStateType} from "../../redux/redux-store";
 import  {StringParam, useQueryParams, useQueryParam, withDefault,ArrayParam} from "use-query-params";
 import {useFormik} from "formik";
 import * as yup from "yup";
+import {getDataAction} from "../../redux/actionTypes";
 
 interface MyFormValues {
     product: string;
@@ -51,17 +52,15 @@ const Shop = () => {
 
     const [filteredArr, setFilteredArr] = useState([])
 
-
     useEffect(() => {
-        dispatch(getArrayData())
+        if(!productsData.length) {
+            dispatch(getDataAction())
+        }
     }, [])
-
     useEffect(() => {
         const includeCategory = formik.values.category === "All category"
         const updatedProducts = productsData.filter((product: ProductsDataType) => product.name.includes(formik.values.product) && (includeCategory ?  true : product.bsr_category.includes(formik.values.category)))
         setFilteredArr(updatedProducts)
-
-
 
         // if (formik.values.category && formik.values.product) {
         //     const filteredByCategory = formik.values.category === "All category"
@@ -88,7 +87,7 @@ const Shop = () => {
     return (
         <div className={style.mainStyleContainer}>
             <div className={style.searchInput}>
-                < SearchForm query={query} setQuery={setQuery} formik={formik} changeUrl={changeUrl}
+                <SearchForm query={query} setQuery={setQuery} formik={formik} changeUrl={changeUrl}
                              categoriesData={categoriesData}/>
             </div>
             <div className={style.product}>

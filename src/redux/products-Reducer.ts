@@ -2,6 +2,7 @@
 import productsAPI from '../API/api.ts'
 // @ts-ignore
 import {BaseThunkType, InferActionsTypes, } from './redux-store.ts'
+import {ActionTypes} from "./actionTypes";
 
 export type ProductsDataType = {
   img: string
@@ -28,30 +29,28 @@ let initialState: InitialStateInterface = {
 const productsReducer = (state = initialState, action: ActionsType): InitialStateInterface => {
 
   switch (action.type) {
-    case 'SET_PRODUCTS':
-      const allCategories = action.products.map((product: ProductsDataType) => product.bsr_category)
+    case ActionTypes.SET_PRODUCTS:
+      const allCategories = action.payload.map((product: ProductsDataType) => product.bsr_category)
       // @ts-ignore t
       const categories: Array<string> = [...new Set(allCategories)]
-      return {...state, productsData: action.products, categories}
+      return {...state, productsData: action.payload, categories}
     case 'SET_SEARCH':
       return {...state, search: action.payload}
     default:
       return state;
   }
-
 }
 type ActionsType = InferActionsTypes<typeof actions>
-type ThunkType = BaseThunkType<ActionsType>
-
+// type ThunkType = BaseThunkType<ActionsType>
 
 export const actions = {
-  setProducts: (products: ProductsDataType[]) => ({type: 'SET_PRODUCTS', products} as const),
+  // setProducts: (products: ProductsDataType[]) => ({type: 'SET_PRODUCTS', products} as const),
   setSearch: (search: string) => ({type: 'SET_SEARCH', payload: search} as const)
 }
 
-export const getArrayData = (): ThunkType => async (dispatch: ActionsType) => {
-  const data = await productsAPI.getProducts()
-  dispatch(actions.setProducts(data))
-}
+// export const getArrayData = (): ThunkType => async (dispatch: ActionsType) => {
+//   const data = await productsAPI.getProducts()
+//   dispatch(actions.setProducts(data))
+// }
 
 export default productsReducer
