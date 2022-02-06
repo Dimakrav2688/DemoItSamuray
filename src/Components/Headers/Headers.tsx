@@ -9,7 +9,8 @@ import style from './style.module.css'
 import Basket from '../Basket/Basket.tsx'
 import Button from "@mui/material/Button";
 import LanguageIcon from '@mui/icons-material/Language';
-import {useTranslation, withTranslation} from 'react-i18next';
+// @ts-ignore
+import {useTranslation} from 'react-i18next';
 
 
 function Header() {
@@ -19,7 +20,6 @@ function Header() {
         setCardOpen(true)
     }
 
-    //// Translation
 
     const { t, i18n } = useTranslation(['translation']);
 

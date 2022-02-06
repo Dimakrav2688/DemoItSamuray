@@ -1,18 +1,17 @@
 // @ts-ignore t
-import  React from 'react'
+import React from 'react'
 // @ts-ignore
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Grid from '@mui/material/Grid';
-import {Card, CardActions, CardContent, CardMedia, Typography} from "@mui/material";
+import { Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-// @ts-ignore
-import {useLocation} from "react-router-dom";
+
 
 type IProps = {
     product: any
-}
+    }
 
-let Product: React.FC<IProps> = ({product} : IProps) => {
+let Product: React.FC<IProps> = ({ product }: IProps) => {
 
     const cardStyle = {
         display: 'flex',
@@ -24,17 +23,17 @@ let Product: React.FC<IProps> = ({product} : IProps) => {
 
     return (
         <Grid item xs={12} md={4}>
-            <Card sx={{minHeight: '500px', display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+            <Card sx={{ minHeight: '500px', display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                 <div>
                     <CardMedia
                         image={product.img}
                         component='img'
                         alt={product.name}
                         title={'pic'}
-                        sx={{height: "194px", objectFit: "contain"}}
+                        sx={{ height: "194px", objectFit: "contain" }}
                     />
                     <CardContent>
-                        <Link to={{search: `?search=${product.asin}`}}>
+                        <Link to={'/' + product.name}>
                             <Typography component='h6'>
                                 {product.name}
                             </Typography>
