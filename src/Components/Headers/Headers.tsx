@@ -24,7 +24,6 @@ function Header() {
     const { t, i18n } = useTranslation(['translation']);
 
     const changeLanguage = (lng: string) => {
-        debugger
         i18n.changeLanguage(lng);
     };
 

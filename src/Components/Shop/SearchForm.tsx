@@ -36,7 +36,7 @@ const SearchForm: React.FC<SearchFormPropsType> = ({
 }: SearchFormPropsType) => {
 
   const [skipFirstRender, setSkipFirstRender] = useState(false)
-  console.log(formik)
+  // console.log(formik)
 
 
   const { values, errors, touched, handleBlur, isValid, handleSubmit, dirty } = formik
@@ -49,7 +49,7 @@ const SearchForm: React.FC<SearchFormPropsType> = ({
       setSkipFirstRender(true)
     }
   }, [formik.values])
- 
+
   const searchStyle = {
     display: 'flex',
     transitionDuration: '0.3s',
@@ -71,7 +71,6 @@ const SearchForm: React.FC<SearchFormPropsType> = ({
     setQuery({ [fieldName]: e.target.value })
   }
 
-
   return (
     <div className={style.searchStyle}>
       <div>
@@ -81,7 +80,7 @@ const SearchForm: React.FC<SearchFormPropsType> = ({
             onBlur={handleBlur}
             value={values.product} />
 
-          {touched.search && errors.search && <p>{errors.search}</p>}
+          {touched.product && errors.product && <p>{errors.product}</p>}
 
           <Button
             color="primary"
@@ -92,7 +91,7 @@ const SearchForm: React.FC<SearchFormPropsType> = ({
             {t("Search_product")}
           </Button>
 
-          <div>
+          <div className={style.category}>
             <FormControl style={selectStyle}>
               <InputLabel id='categories'>All category </InputLabel>
               <Select
@@ -118,5 +117,3 @@ const SearchForm: React.FC<SearchFormPropsType> = ({
 
 
 export default SearchForm;
-
-

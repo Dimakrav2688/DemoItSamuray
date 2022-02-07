@@ -39,7 +39,7 @@ let Product: React.FC<IProps> = ({ product }: IProps) => {
                             </Typography>
                         </Link>
                         <Typography variant='body1'>
-                            Prise: {product.price}
+                            Prise: {product.price}$
                         </Typography>
                         <div>
                             {product.asin}
@@ -48,9 +48,7 @@ let Product: React.FC<IProps> = ({ product }: IProps) => {
                         <div>
                             {product.bsr_category}
                         </div>
-                        {/*<div>*/}
-                        {/*    {product.link}*/}
-                        {/*</div>*/}
+
 
                     </CardContent>
                 </div>

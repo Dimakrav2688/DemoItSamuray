@@ -58,7 +58,7 @@ const Shop = () => {
     useEffect(() => {
         const includeCategory: boolean = formik.values.category === "All category"
         const updatedProducts = productsData.filter((product: ProductsDataType) =>
-            product.name.includes(formik.values.product) && (includeCategory ? true : product.bsr_category.includes(formik.values.category)))
+            product.name.toLowerCase().includes(formik.values.product) && (includeCategory ? true : product.bsr_category.includes(formik.values.category)))
         setFilteredArr(updatedProducts)
     }, [formik.values, productsData, query])
 
@@ -66,7 +66,7 @@ const Shop = () => {
         <div className={style.mainStyleContainer}>
             <div className={style.searchInput}>
                 <SearchForm query={query} setQuery={setQuery} formik={formik} changeUrl={changeUrl}
-                    categoriesData={categoriesData} />
+                    categoriesData={categoriesData}  />
             </div>
             <div className={style.product}>
                 <Grid container spacing={3}>
