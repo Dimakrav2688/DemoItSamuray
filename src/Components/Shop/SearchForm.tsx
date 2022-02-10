@@ -28,7 +28,6 @@ interface SearchFormPropsType {
 
 const SearchForm: React.FC<SearchFormPropsType> = ({
   formik,
-  query,
   setQuery,
   changeUrl,
   filteredCategorySelector,
@@ -76,7 +75,7 @@ const SearchForm: React.FC<SearchFormPropsType> = ({
       <div>
         <form onSubmit={formik.handleSubmit}>
 
-          <TextField type='text' label='Search product' name='product' onChange={(e) => handleFieldChange(e, 'product')}
+          <TextField data-testid="product-field" type='text' label='Search product' name='product' onChange={(e) => handleFieldChange(e, 'product')}
             onBlur={handleBlur}
             value={values.product} />
 
@@ -93,8 +92,9 @@ const SearchForm: React.FC<SearchFormPropsType> = ({
 
           <div className={style.category}>
             <FormControl style={selectStyle}>
-              <InputLabel id='categories'>All category </InputLabel>
+              <InputLabel id='categories'>Select category</InputLabel>
               <Select
+                data-testid="category"
                 labelId='categories'
                 id={filteredCategorySelector}
                 name="category"

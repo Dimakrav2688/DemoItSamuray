@@ -37,6 +37,9 @@ i18n
     // for all options read: https://www.i18next.com/overview/configuration-options
     .init({
         // resources,
+        react: {
+            useSuspense: false
+        },
         defaultNS: 'translation',
         fallbackLng: 'ua',
         debug: true,

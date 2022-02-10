@@ -42,7 +42,7 @@ const Shop = () => {
     }
 
     const formik = useFormik({
-        initialValues: { product: query.product || '', category: query.category || '' },
+        initialValues: { product: query.product || '', category: query.category || 'All category' },
         onSubmit: (values: MyFormValues) => {
             dispatch(actions.setSearch(values.product))
         },
@@ -58,18 +58,19 @@ const Shop = () => {
     useEffect(() => {
         const includeCategory: boolean = formik.values.category === "All category"
         const updatedProducts = productsData.filter((product: ProductsDataType) =>
-            product.name.toLowerCase().includes(formik.values.product) && (includeCategory ? true : product.bsr_category.includes(formik.values.category)))
-        setFilteredArr(updatedProducts)
-    }, [formik.values, productsData, query])
+            product.name.toLowerCase().includes(formik.values.product.toLowerCase()) && (includeCategory ? true : product.bsr_category.includes(formik.values.category)))
 
+        setFilteredArr(updatedProducts)
+    }, [ formik.values, productsData])
+    // formik.values, productsData,
     return (
         <div className={style.mainStyleContainer}>
             <div className={style.searchInput}>
-                <SearchForm query={query} setQuery={setQuery} formik={formik} changeUrl={changeUrl}
+                <SearchForm  setQuery={setQuery} formik={formik} changeUrl={changeUrl}
                     categoriesData={categoriesData}  />
             </div>
             <div className={style.product}>
-                <Grid container spacing={3}>
+                <Grid data-testid="product-search" container spacing={3}>
                     {((formik.values.category || formik.values.product) ? filteredArr : productsData)
                         .map((product: ProductsDataType) =>
                             <Product key={product.asin} product={product} setQuery={setQuery}

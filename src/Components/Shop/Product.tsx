@@ -33,7 +33,7 @@ let Product: React.FC<IProps> = ({ product }: IProps) => {
                         sx={{ height: "194px", objectFit: "contain" }}
                     />
                     <CardContent>
-                        <Link to={'/' + product.name}>
+                        <Link to={'/' + product.asin}>
                             <Typography component='h6'>
                                 {product.name}
                             </Typography>

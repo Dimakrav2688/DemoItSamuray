@@ -1,4 +1,4 @@
-import {applyMiddleware, combineReducers, createStore, Action, Store} from 'redux';
+import {applyMiddleware, combineReducers, createStore, Action, Store} from 'reççdux';
 // @ts-ignore
 import productsReducer, {InitialStateInterface, ProductsDataType} from './products-Reducer.ts';
 import thunkMiddleware, { ThunkAction } from 'redux-thunk'
